@@ -51,12 +51,29 @@ filterBtns.forEach(btn => {
 const nav = document.querySelector('nav');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-        nav.style.padding = '0.5rem 0';
-        nav.style.background = 'rgba(5, 5, 5, 0.95)';
+        nav.classList.add('scrolled');
     } else {
-        nav.style.padding = '1rem 0';
-        nav.style.background = 'rgba(5, 5, 5, 0.8)';
+        nav.classList.remove('scrolled');
     }
+});
+
+// Mobile Menu Toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+}
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
 });
 
 // Add 'reveal' class to sections for consistency
